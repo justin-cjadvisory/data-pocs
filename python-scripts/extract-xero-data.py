@@ -17,3 +17,23 @@ api_client = ApiClient(
     ),
     pool_threads=1,
 )
+
+api_client.set_oauth2_token("YOUR_ACCESS_TOKEN")
+
+def accounting_get_bank_transactions_history():
+    api_instance = AccountingApi(api_client)
+    xero_tenant_id = 'YOUR_XERO_TENANT_ID'
+    bank_transaction_id = '00000000-0000-0000-0000-000000000000'
+    
+    try:
+        api_response = api_instance.get_bank_transactions_history(xero_tenant_id, bank_transaction_id)
+        print(api_response)
+    except AccountingBadRequestException as e:
+        print("Exception when calling AccountingApi->getBankTransactionsHistory: %s\n" % e)
+
+def main():
+    # Call the function that retrieves the bank transactions history
+    accounting_get_bank_transactions_history()
+
+if __name__ == "__main__":
+    main()
