@@ -1,39 +1,22 @@
-from config import CLIENT_ID, CLIENT_SECRET, XERO_TENANT_ID, ACCESS_TOKEN, BANK_TRANSACTION_ID
+import requests
 
-from xero_python.accounting import AccountingApi, ContactPerson, Contact, Contacts
-from xero_python.api_client import ApiClient, serialize
-from xero_python.api_client.configuration import Configuration
-from xero_python.api_client.oauth2 import OAuth2Token
-from xero_python.exceptions import AccountingBadRequestException
-from xero_python.identity import IdentityApi
-from xero_python.utils import getvalue
+url_test = 'https://data.odatalink.com/CJ-Adv-672986/ryan_developmen_4670/Rya-Dev/'
 
-api_client = ApiClient(
-    Configuration(
-        debug=False,
-        oauth2_token=OAuth2Token(
-            client_id= CLIENT_ID, client_secret= CLIENT_SECRET
-        ),
-    ),
-    pool_threads=1,
-)
-
-api_client.set_oauth2_token(ACCESS_TOKEN)
-
-def accounting_get_bank_transactions_history():
-    api_instance = AccountingApi(api_client)
-    xero_tenant_id = XERO_TENANT_ID
-    bank_transaction_id = BANK_TRANSACTION_ID
+try:
+    r = requests.get(url_test)
+    r.raise_for_status()  # Ensure request was successful
+    r_json = r.json()     # Parse JSON content
     
-    try:
-        api_response = api_instance.get_bank_transactions_history(xero_tenant_id, bank_transaction_id)
-        print(api_response)
-    except AccountingBadRequestException as e:
-        print("Exception when calling AccountingApi->getBankTransactionsHistory: %s\n" % e)
-
-def main():
-    # Call the function that retrieves the bank transactions history
-    accounting_get_bank_transactions_history()
-
-if __name__ == "__main__":
-    main()
+    # Loop through 'value' and print the whole object for debugging
+    for value in r_json.get('value', []):
+        print("Full value:", value)  # Debug: Print entire object
+        url = value.get('url')  # Extract 'AccountID' safely
+        if url is not None:
+            print(f"URL: {url}")
+        else:
+            print("URL not found")
+        
+except requests.exceptions.RequestException as e:
+    print(f"An error occurred: {e}")
+except ValueError:
+    print("Error decoding JSON response.")
