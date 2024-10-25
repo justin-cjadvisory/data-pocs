@@ -1,0 +1,9 @@
+# Ignore the jsonoutput folder
+jsonoutput/
+
+# Ignore Python cache files
+__pycache__/
+
+# Other files or folders to ignore
+*.pyc
+*.pyo
