@@ -1,5 +1,188 @@
-CLIENT_ID = "2AE56BE234B9460DB54EC3D6F3A26A95"
-CLIENT_SECRET = "9C9cJJndtm_eOQ4j790rEmUqsJ_1_0_1OQTvdbP0lrB1Dxt5"
-XERO_TENANT_ID = '8dcf7e61-5247-4584-98c5-38e4bace06a2'
-ACCESS_TOKEN = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE3Mjk1ODEzMTYsImV4cCI6MTcyOTU4MzExNiwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiMkFFNTZCRTIzNEI5NDYwREI1NEVDM0Q2RjNBMjZBOTUiLCJzdWIiOiIzYmE1YTgzZGJmYTk1ZWQwOTk1M2U1OGQ5MTc4NWRhMiIsImF1dGhfdGltZSI6MTcyOTU4MTMwNCwieGVyb191c2VyaWQiOiJhZjdhODgxMi04YWY2LTRlMTMtODg2MC04NWNmMGM3ZjgzYjIiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjlhNmMyZGIzZGNhMTQ1NTRiOTJiMmEzY2VjOTI5OWZiIiwic2lkIjoiOWE2YzJkYjNkY2ExNDU1NGI5MmIyYTNjZWM5Mjk5ZmIiLCJqdGkiOiI3NjI0NEY2NjI5RTE3MjMyM0FFMzUzNjJFN0U4OUMzMiIsImF1dGhlbnRpY2F0aW9uX2V2ZW50X2lkIjoiMGViM2E3NGEtY2EzOS00Zjg1LWI5NTctZjliNzlhNmRkYjRmIiwic2NvcGUiOlsiZW1haWwiLCJwcm9maWxlIiwib3BlbmlkIiwiYWNjb3VudGluZy5zZXR0aW5ncyIsImFjY291bnRpbmcudHJhbnNhY3Rpb25zIiwiYWNjb3VudGluZy5jb250YWN0cyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiLCJtZmEiLCJlbWwiXX0.HUPyEq-pAkq58Vg5rliGmie6AbnyM4Oph2ePlLELBFRAZEF3U0zK6ET6rbhLY0VuuXacqJXGQiMdtUZyr3-MDjPHEtCA-cY6sM84jhfXOtb0HRSsTcf29SyJkNZGh4_oF7gn3t2t_vHh2hEAnF00oz57k7tvkuJxns57to-OX31l2VXWKprfK9OaNO8QPdhA2vIHu_PbWf1OxWFcSkRoBNhVgY_9Plpp2sXTSaxLFP3c6EvHX4ydrDsCrrkzfwh0rM5zA0cotQZdqI-s8PqNCITn382T0kNAVJ-r4qT99LAv5MZll4xu6OsZsYZOpNQBYrzDQ9SwJ6VGnJDNx52xYw"
-BANK_TRANSACTION_ID = "664c6799-ad3d-4af3-89c7-de40a7f24c7f"
+import requests
+import json
+
+# Define a dictionary to map endpoint types to their corresponding fields
+endpoint_config = {
+    "Accounts": [
+        "AccountID", "Code", "Name", "Status", "Type", "TaxType", "Description", 
+        "Class", "SystemAccount", "EnablePaymentsToAccount", "ShowInExpenseClaims", 
+        "BankAccountNumber", "BankAccountType", "CurrencyCode", "ReportingCode", 
+        "ReportingCodeName", "HasAttachments", "UpdatedDateUTC", "AddToWatchlist", 
+        "DataFileID", "DataFileName", "DataFileCode"
+    ],
+    "AccountsClass": [
+        "Class", "IsProfitLoss", "IsBalanceSheet", "IsDebit", "IsCredit", 
+        "DrCrSign", "ProfitLossSign", "VarianceImpactSign"
+    ],
+    "AccountsTable": [
+        "DataFileID", "DataFileName", "DataFileCode", "AccountID", "Code",
+        "Name", "Status", "Type", "TaxType", "Description", "Class", "SystemAccount",
+        "EnablePaymentsToAccount", "ShowInExpenseClaims", "BankAccountNumber",
+        "BankAccountType", "CurrencyCode", "ReportingCode", "ReportingCodeName",
+        "HasAttachments", "UpdatedDateUTC", "AddToWatchlist"
+    ],
+    "AccountsTotals": [
+        "AccountTotal", "AccountTotalName", "IsProfitLoss", 
+        "IsBalanceSheet", "IsAccountClassification", "Order", 
+        "VarianceImpactSign", "AccountsTypes"  
+    ],
+    "AccountsTypes": [
+        "AccountType", "AccountTypeName", "Class", "IsProfitLoss",
+        "IsBalanceSheet", "IsDebit", "IsCredit", "DrCrSign",
+        "VarianceImpactSign"
+    ],
+    "BalanceSheetAdvanced": [
+        "DataFileID", "DataFileName", "DataFileCode", "Date", "PaymentsOnly", "StandardLayout", 
+        "TimeFrame", "Periods", "TrackingOptionID", "TrackingOptionID2", "LineType", "AccountID", 
+        "AccountName", "AccountLineType", "LineDescription", "Amount"
+    ],
+    "BalanceSheetByMonth": [
+        "DataFileID", "DataFileName", "DataFileCode", "FinancialYear", "PaymentsOnly", 
+        "StandardLayout", "UpdatedDateUTC", "Lines"
+    ],
+    "BalanceSheetByTrackingOption": [
+        "DataFileID", "DataFileName", "DataFileCode", "Date", 
+        "PaymentsOnly", "StandardLayout", "TrackingOptionID", 
+        "TrackingOptionID2", "LineType", "AccountID", 
+        "AccountName", "AccountLineType", "Amount"
+    ],
+    "BalanceSheetMultiPeriodTable": [
+        "DataFileID", "DataFileName", "DataFileCode", "Date", 
+        "Period", "PaymentsOnly", "StandardLayout", "LineType", 
+        "AccountID", "AccountName", "AccountLineType", "Amount"
+    ],
+    "BalanceSheetTable": [
+        "DataFileID", "DataFileName", "DataFileCode", "Date", "PaymentsOnly", 
+        "StandardLayout", "LineType", "AccountID", "AccountName", 
+        "AccountLineType", "Amount"
+    ],
+    "BankSummary": [
+        "DataFileID", "DataFileName", "DataFileCode", 
+        "FromDate", "ToDate", "UpdatedDateUTC", "Lines", 
+        "LineType", "AccountID", "AccountName", "OpeningBalanceAmount", 
+        "CashReceivedAmount", "CashSpentAmount", 
+        "FXGainLossAmount", "ClosingBalanceAmount"
+    ],
+    "BankTransactions": [
+        "DataFileID", "DataFileName", "DataFileCode", 
+        "BankTransactionID", "AccountID", "Code", "Name", 
+        "BatchPayment", "Type", "Reference", "Url", "IsReconciled", 
+        "PrepaymentID", "OverpaymentID", "HasAttachments", "ContactID", 
+        "ContactName", "Date", "Status", "SubTotal", 
+        "TotalTax", "Total", "UpdatedDateUTC", "CurrencyCode", "CurrencyRate"
+    ],
+    "BankTransactionsExpanded": [
+        "DataFileID", "DataFileName", "DataFileCode", "BankTransactionID", 
+        "AccountID", "Code", "Name", "BatchPayment", "Type", "Reference", 
+        "Url", "IsReconciled", "PrepaymentID", "OverpaymentID", 
+        "HasAttachments", "ContactID", "ContactName", "Date", "Status", 
+        "LineAmountTypes", "ItemCode", "Description", "UnitAmount", "TaxType", 
+        "TaxAmount", "LineAmount", "AccountCode", "TrackingName", "TrackingOption", 
+        "TrackingCategoryID", "Quantity", "LineItemID", "AccountID", "SubTotal", 
+        "TotalTax", "Total", "UpdatedDateUTC", "CurrencyCode", "CurrencyRate"
+    ],
+    "BankTransfers": [
+        "DataFileID", "DataFileName", "DataFileCode", "BankTransferID", 
+        "CreatedDateUTC", "Date", "FromAccountID", "FromCode", 
+        "FromName", "ToAccountID", "ToCode", "ToName", "Amount", 
+        "FromBankTransactionID", "ToBankTransactionID", "FromIsReconciled", 
+        "ToIsReconciled", "CurrencyRate", "Reference", "HasAttachments"
+    ],
+    "BatchPayments": [
+        "DataFileID", "DataFileName", "DataFileCode", "AccountID", 
+        "BatchPaymentID", "Reference", "Particulars", "Narrative", 
+        "Date", "InvoiceID", "InvoiceAddresses", "InvoicePaymentServices", 
+        "PaymentID", "Amount", "Type", "Status", "TotalAmount", "UpdatedDateUTC", "IsReconciled"
+    ],
+    "Budgets": [
+        "DataFileID", "DataFileName", "DataFileCode", 
+        "BudgetID", "Status", "Description", 
+        "Type", "UpdatedDateUTC", "Tracking"
+    ],
+    "BudgetSummaryByMonth": [
+        "DataFileID", "DataFileName", "DataFileCode", 
+        "FinancialYear", "UpdatedDateUTC", "Lines"
+    ],
+    "ContactsExpanded": [
+        "DataFileID", "DataFileName", "DataFileCode", 
+        "ContactID", "CompanyNumber", "ContactNumber", 
+        "AccountNumber", "ContactStatus", "Name", 
+        "FirstName", "LastName", "EmailAddress", 
+        "SkypeUserName", "BankAccountDetails", "TaxNumber", 
+        "AccountsReceivableTaxType", "AccountsPayableTaxType", 
+        "Addresses", "Phones", "UpdatedDateUTC", 
+        "ContactGroups", "IsSupplier", "IsCustomer", 
+        "Website", "DefaultCurrency", "Discount", 
+        "BrandingTheme", "PurchasesDefaultAccountCode", 
+        "SalesDefaultAccountCode", "SalesTrackingCategories", 
+        "PurchasesTrackingCategories", "SalesDefaultLineAmountType", 
+        "PurchasesDefaultLineAmountType", "BatchPayments", 
+        "PaymentTerms", "Balances", "ContactPersons", 
+        "XeroNetworkKey", "HasAttachments"
+    ],
+    "CreditNotesExpanded": [
+        "DataFileID", "DataFileName", "DataFileCode", 
+        "CreditNoteID", "CreditNoteNumber", "InvoiceAddresses", 
+        "CurrencyRate", "BrandingThemeID", "Type", 
+        "Reference", "RemainingCredit", "Allocations", 
+        "HasAttachments", "ContactID", "ContactName", 
+        "SentToContact", "Date", "DueDate", 
+        "Status", "LineAmountTypes", "LineItems", 
+        "SubTotal", "TotalTax", "Total", 
+        "UpdatedDateUTC", "CurrencyCode", "FullyPaidOnDate"
+    ],
+    "ExecutiveSummary": [
+        "DataFileID", "DataFileName", "DataFileCode", 
+        "Date", "UpdatedDateUTC", "Lines"
+    ],
+    "Invoices": [
+        "DataFileID", "DataFileName", "DataFileCode", 
+        "Type", "InvoiceID", "InvoiceNumber", "Reference", 
+        "Payments", "CreditNotes", "Prepayments", "Overpayments", 
+        "AmountDue", "AmountPaid", "AmountCredited", "SentToContact", 
+        "ExpectedPaymentDate", "PlannedPaymentDate", "CurrencyRate", 
+        "HasAttachments", "InvoiceAddresses", "InvoicePaymentServices", 
+        "ContactID", "ContactName", "RepeatingInvoiceID", 
+        "Date", "DueDate", "BrandingThemeID", "Url", 
+        "Status", "SubTotal", "TotalTax", "Total", 
+        "UpdatedDateUTC", "CurrencyCode", "FullyPaidOnDate", 
+        "CISDeduction"
+    ],
+    "InvoicesExpanded": [
+        "DataFileID", "DataFileName", "DataFileCode", 
+        "InvoiceID", "InvoiceNumber", "Reference", 
+        "Type", "Status", "Date", 
+        "DueDate", "ExpectedPaymentDate", "PlannedPaymentDate", 
+        "FullyPaidOnDate", "ContactID", "ContactName", 
+        "AmountDue", "AmountPaid", "AmountCredited", 
+        "CurrencyCode", "CurrencyRate", "HasAttachments", 
+        "SentToContact", "RepeatingInvoiceID", "BrandingThemeID", 
+        "UpdatedDateUTC"
+    ],
+    "InvoicesExpandedTable": [
+        "DataFileID", "DataFileName", "DataFileCode", 
+        "InvoiceID", "Type", "InvoiceNumber", "Reference", 
+        "Status", "Date", "DueDate", 
+        "ExpectedPaymentDate", "PlannedPaymentDate", 
+        "FullyPaidOnDate", "ContactID", "ContactName", 
+        "LineAmountTypes", "LineID", "LineDescription", 
+        "LineQuantity", "LineUnitAmount", "LineAmount", 
+        "LineTaxAmount", "LineDiscountRate", "LineAccountID", 
+        "LineAccountCode", "LineItemID", "LineItemCode", 
+        "LineItemName", "LineTaxType", "TrackingCategory1ID", 
+        "TrackingCategory1Name", "TrackingOption1Name", 
+        "TrackingCategory2ID", "TrackingCategory2Name", 
+        "TrackingOption2Name", "SubTotal", "TotalTax", 
+        "Total", "AmountDue", "AmountPaid", 
+        "AmountCredited", "CurrencyCode", "CurrencyRate", 
+        "HasAttachments", "SentToContact", "CISDeduction", 
+        "RepeatingInvoiceID", "BrandingThemeID", 
+        "Url", "UpdatedDateUTC"
+    ],
+    "JournalsAccrual": [
+        "DataFileID", "DataFileName", "DataFileCode", "JournalID", 
+        "JournalDate", "JournalNumber", "CreatedDateUTC", "Reference", 
+        "SourceID", "SourceType", "JournalLines"
+    ]
+}
+

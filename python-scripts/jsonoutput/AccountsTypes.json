@@ -1,0 +1,236 @@
+{
+    "@odata.context": "https://data.odatalink.com/CJ-Adv-672986/ryan_developmen_4670/Rya-Dev/$metadata#AccountsTypes",
+    "value": [
+        {
+            "AccountType": "REVENUE",
+            "AccountTypeName": "Revenue",
+            "Class": "REVENUE",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsDebit": false,
+            "IsCredit": true,
+            "DrCrSign": -1,
+            "VarianceImpactSign": 1
+        },
+        {
+            "AccountType": "SALES",
+            "AccountTypeName": "Sales",
+            "Class": "REVENUE",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsDebit": false,
+            "IsCredit": true,
+            "DrCrSign": -1,
+            "VarianceImpactSign": 1
+        },
+        {
+            "AccountType": "DIRECTCOSTS",
+            "AccountTypeName": "Direct Costs",
+            "Class": "EXPENSE",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsDebit": true,
+            "IsCredit": false,
+            "DrCrSign": 1,
+            "VarianceImpactSign": -1
+        },
+        {
+            "AccountType": "OTHERINCOME",
+            "AccountTypeName": "Other Income",
+            "Class": "REVENUE",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsDebit": false,
+            "IsCredit": true,
+            "DrCrSign": -1,
+            "VarianceImpactSign": 1
+        },
+        {
+            "AccountType": "EXPENSE",
+            "AccountTypeName": "Expense",
+            "Class": "EXPENSE",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsDebit": true,
+            "IsCredit": false,
+            "DrCrSign": 1,
+            "VarianceImpactSign": -1
+        },
+        {
+            "AccountType": "OVERHEADS",
+            "AccountTypeName": "Overhead",
+            "Class": "EXPENSE",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsDebit": true,
+            "IsCredit": false,
+            "DrCrSign": 1,
+            "VarianceImpactSign": -1
+        },
+        {
+            "AccountType": "DEPRECIATN",
+            "AccountTypeName": "Depreciation",
+            "Class": "EXPENSE",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsDebit": true,
+            "IsCredit": false,
+            "DrCrSign": 1,
+            "VarianceImpactSign": -1
+        },
+        {
+            "AccountType": "WAGESEXPENSE",
+            "AccountTypeName": "Wage Expense",
+            "Class": "EXPENSE",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsDebit": true,
+            "IsCredit": false,
+            "DrCrSign": 1,
+            "VarianceImpactSign": -1
+        },
+        {
+            "AccountType": "SUPERANNUATIONEXPENSE",
+            "AccountTypeName": "Superannuation Expense",
+            "Class": "EXPENSE",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsDebit": true,
+            "IsCredit": false,
+            "DrCrSign": 1,
+            "VarianceImpactSign": -1
+        },
+        {
+            "AccountType": "CURRENT",
+            "AccountTypeName": "Current Asset",
+            "Class": "ASSET",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsDebit": true,
+            "IsCredit": false,
+            "DrCrSign": 1,
+            "VarianceImpactSign": 1
+        },
+        {
+            "AccountType": "INVENTORY",
+            "AccountTypeName": "Inventory",
+            "Class": "ASSET",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsDebit": true,
+            "IsCredit": false,
+            "DrCrSign": 1,
+            "VarianceImpactSign": 1
+        },
+        {
+            "AccountType": "PREPAYMENT",
+            "AccountTypeName": "Prepayment",
+            "Class": "ASSET",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsDebit": true,
+            "IsCredit": false,
+            "DrCrSign": 1,
+            "VarianceImpactSign": 1
+        },
+        {
+            "AccountType": "BANK",
+            "AccountTypeName": "Bank",
+            "Class": "ASSET",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsDebit": true,
+            "IsCredit": false,
+            "DrCrSign": 1,
+            "VarianceImpactSign": 1
+        },
+        {
+            "AccountType": "FIXED",
+            "AccountTypeName": "Fixed Asset",
+            "Class": "ASSET",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsDebit": true,
+            "IsCredit": false,
+            "DrCrSign": 1,
+            "VarianceImpactSign": 1
+        },
+        {
+            "AccountType": "NONCURRENT",
+            "AccountTypeName": "Non-Current Asset",
+            "Class": "ASSET",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsDebit": true,
+            "IsCredit": false,
+            "DrCrSign": 1,
+            "VarianceImpactSign": 1
+        },
+        {
+            "AccountType": "CURRLIAB",
+            "AccountTypeName": "Current Liability",
+            "Class": "LIABILITY",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsDebit": false,
+            "IsCredit": true,
+            "DrCrSign": -1,
+            "VarianceImpactSign": -1
+        },
+        {
+            "AccountType": "LIABILITY",
+            "AccountTypeName": "Liability",
+            "Class": "LIABILITY",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsDebit": false,
+            "IsCredit": true,
+            "DrCrSign": -1,
+            "VarianceImpactSign": -1
+        },
+        {
+            "AccountType": "TERMLIAB",
+            "AccountTypeName": "Long Term Liability",
+            "Class": "LIABILITY",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsDebit": false,
+            "IsCredit": true,
+            "DrCrSign": -1,
+            "VarianceImpactSign": -1
+        },
+        {
+            "AccountType": "PAYGLIABILITY",
+            "AccountTypeName": "PAYG Liability",
+            "Class": "LIABILITY",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsDebit": false,
+            "IsCredit": true,
+            "DrCrSign": -1,
+            "VarianceImpactSign": -1
+        },
+        {
+            "AccountType": "SUPERANNUATIONLIABILITY",
+            "AccountTypeName": "Superannuation Liability",
+            "Class": "LIABILITY",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsDebit": false,
+            "IsCredit": true,
+            "DrCrSign": -1,
+            "VarianceImpactSign": -1
+        },
+        {
+            "AccountType": "EQUITY",
+            "AccountTypeName": "Equity",
+            "Class": "EQUITY",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsDebit": false,
+            "IsCredit": true,
+            "DrCrSign": -1,
+            "VarianceImpactSign": 1
+        }
+    ]
+}

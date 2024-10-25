@@ -1,0 +1,291 @@
+{
+    "@odata.context": "https://data.odatalink.com/CJ-Adv-672986/ryan_developmen_4670/Rya-Dev/$metadata#AccountsTotals",
+    "value": [
+        {
+            "AccountTotal": "INCOME",
+            "AccountTotalName": "Income",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsAccountClassification": true,
+            "Order": 1,
+            "VarianceImpactSign": 1,
+            "AccountsTypes": [
+                {
+                    "AccountType": "REVENUE",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "SALES",
+                    "DrCrSign": 1
+                }
+            ]
+        },
+        {
+            "AccountTotal": "DIRECTCOSTS",
+            "AccountTotalName": "Cost Of Sales",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsAccountClassification": true,
+            "Order": 2,
+            "VarianceImpactSign": -1,
+            "AccountsTypes": [
+                {
+                    "AccountType": "DIRECTCOSTS",
+                    "DrCrSign": 1
+                }
+            ]
+        },
+        {
+            "AccountTotal": "GROSSPROFIT",
+            "AccountTotalName": "Gross Profit / (Loss)",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsAccountClassification": false,
+            "Order": 3,
+            "VarianceImpactSign": 1,
+            "AccountsTypes": [
+                {
+                    "AccountType": "REVENUE",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "SALES",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "DIRECTCOSTS",
+                    "DrCrSign": -1
+                }
+            ]
+        },
+        {
+            "AccountTotal": "OTHERINCOME",
+            "AccountTotalName": "Other Income",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsAccountClassification": true,
+            "Order": 4,
+            "VarianceImpactSign": 1,
+            "AccountsTypes": [
+                {
+                    "AccountType": "OTHERINCOME",
+                    "DrCrSign": 1
+                }
+            ]
+        },
+        {
+            "AccountTotal": "EXPENSES",
+            "AccountTotalName": "Operating Expenses",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsAccountClassification": true,
+            "Order": 5,
+            "VarianceImpactSign": -1,
+            "AccountsTypes": [
+                {
+                    "AccountType": "EXPENSE",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "OVERHEADS",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "DEPRECIATN",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "WAGESEXPENSE",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "SUPERANNUATIONEXPENSE",
+                    "DrCrSign": 1
+                }
+            ]
+        },
+        {
+            "AccountTotal": "NETPROFIT",
+            "AccountTotalName": "Net Profit",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsAccountClassification": false,
+            "Order": 6,
+            "VarianceImpactSign": 1,
+            "AccountsTypes": [
+                {
+                    "AccountType": "REVENUE",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "SALES",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "OTHERINCOME",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "DIRECTCOSTS",
+                    "DrCrSign": -1
+                },
+                {
+                    "AccountType": "EXPENSE",
+                    "DrCrSign": -1
+                },
+                {
+                    "AccountType": "OVERHEADS",
+                    "DrCrSign": -1
+                },
+                {
+                    "AccountType": "DEPRECIATN",
+                    "DrCrSign": -1
+                },
+                {
+                    "AccountType": "WAGESEXPENSE",
+                    "DrCrSign": -1
+                },
+                {
+                    "AccountType": "SUPERANNUATIONEXPENSE",
+                    "DrCrSign": -1
+                }
+            ]
+        },
+        {
+            "AccountTotal": "ASSETS",
+            "AccountTotalName": "Assets",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsAccountClassification": true,
+            "Order": 7,
+            "VarianceImpactSign": 1,
+            "AccountsTypes": [
+                {
+                    "AccountType": "CURRENT",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "INVENTORY",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "PREPAYMENT",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "BANK",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "FIXED",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "NONCURRENT",
+                    "DrCrSign": 1
+                }
+            ]
+        },
+        {
+            "AccountTotal": "LIABILITIES",
+            "AccountTotalName": "Liabilities",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsAccountClassification": true,
+            "Order": 8,
+            "VarianceImpactSign": -1,
+            "AccountsTypes": [
+                {
+                    "AccountType": "CURRLIAB",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "LIABILITY",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "TERMLIAB",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "PAYGLIABILITY",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "SUPERANNUATIONLIABILITY",
+                    "DrCrSign": 1
+                }
+            ]
+        },
+        {
+            "AccountTotal": "NETASSETS",
+            "AccountTotalName": "Net Assets",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsAccountClassification": false,
+            "Order": 9,
+            "VarianceImpactSign": 1,
+            "AccountsTypes": [
+                {
+                    "AccountType": "CURRENT",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "INVENTORY",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "PREPAYMENT",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "BANK",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "FIXED",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "NONCURRENT",
+                    "DrCrSign": 1
+                },
+                {
+                    "AccountType": "CURRLIAB",
+                    "DrCrSign": -1
+                },
+                {
+                    "AccountType": "LIABILITY",
+                    "DrCrSign": -1
+                },
+                {
+                    "AccountType": "TERMLIAB",
+                    "DrCrSign": -1
+                },
+                {
+                    "AccountType": "PAYGLIABILITY",
+                    "DrCrSign": -1
+                },
+                {
+                    "AccountType": "SUPERANNUATIONLIABILITY",
+                    "DrCrSign": -1
+                }
+            ]
+        },
+        {
+            "AccountTotal": "EQUITY",
+            "AccountTotalName": "Equity",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsAccountClassification": true,
+            "Order": 10,
+            "VarianceImpactSign": 1,
+            "AccountsTypes": [
+                {
+                    "AccountType": "EQUITY",
+                    "DrCrSign": 1
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,55 @@
+{
+    "@odata.context": "https://data.odatalink.com/CJ-Adv-672986/ryan_developmen_4670/Rya-Dev/$metadata#AccountsClass",
+    "value": [
+        {
+            "Class": "REVENUE",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsDebit": false,
+            "IsCredit": true,
+            "DrCrSign": -1,
+            "ProfitLossSign": 1,
+            "VarianceImpactSign": 1
+        },
+        {
+            "Class": "EXPENSE",
+            "IsProfitLoss": true,
+            "IsBalanceSheet": false,
+            "IsDebit": true,
+            "IsCredit": false,
+            "DrCrSign": 1,
+            "ProfitLossSign": -1,
+            "VarianceImpactSign": -1
+        },
+        {
+            "Class": "ASSET",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsDebit": true,
+            "IsCredit": false,
+            "DrCrSign": 1,
+            "ProfitLossSign": 0,
+            "VarianceImpactSign": 1
+        },
+        {
+            "Class": "LIABILITY",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsDebit": false,
+            "IsCredit": true,
+            "DrCrSign": -1,
+            "ProfitLossSign": 0,
+            "VarianceImpactSign": -1
+        },
+        {
+            "Class": "EQUITY",
+            "IsProfitLoss": false,
+            "IsBalanceSheet": true,
+            "IsDebit": false,
+            "IsCredit": true,
+            "DrCrSign": -1,
+            "ProfitLossSign": 0,
+            "VarianceImpactSign": 1
+        }
+    ]
+}

@@ -1,0 +1,184 @@
+{
+    "@odata.context": "https://data.odatalink.com/CJ-Adv-672986/ryan_developmen_4670/Rya-Dev/$metadata#BudgetSummaryByMonth",
+    "value": [
+        {
+            "DataFile": {
+                "DataFileID": "1f1eeb8e-5413-4594-a3d1-a9bd0691e353",
+                "DataFileName": "Ryan Developments Pty Ltd",
+                "DataFileCode": "Rya-Dev"
+            },
+            "FinancialYear": 2025,
+            "UpdatedDateUTC": "2024-10-25T17:49:32.715+11:00",
+            "Lines": [
+                {
+                    "LineType": "Total",
+                    "AccountID": null,
+                    "AccountName": "Gross Profit",
+                    "AccountLineType": "Total",
+                    "Amounts": [
+                        {
+                            "Date": "2024-07-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2024-08-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2024-09-30",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2024-10-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2024-11-30",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2024-12-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-01-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-02-28",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-03-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-04-30",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-05-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-06-30",
+                            "Amount": 0
+                        }
+                    ]
+                },
+                {
+                    "LineType": "Total",
+                    "AccountID": null,
+                    "AccountName": "Total Expenses",
+                    "AccountLineType": "Total",
+                    "Amounts": [
+                        {
+                            "Date": "2024-07-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2024-08-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2024-09-30",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2024-10-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2024-11-30",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2024-12-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-01-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-02-28",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-03-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-04-30",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-05-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-06-30",
+                            "Amount": 0
+                        }
+                    ]
+                },
+                {
+                    "LineType": "Total",
+                    "AccountID": null,
+                    "AccountName": "Net Profit",
+                    "AccountLineType": "Total",
+                    "Amounts": [
+                        {
+                            "Date": "2024-07-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2024-08-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2024-09-30",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2024-10-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2024-11-30",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2024-12-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-01-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-02-28",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-03-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-04-30",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-05-31",
+                            "Amount": 0
+                        },
+                        {
+                            "Date": "2025-06-30",
+                            "Amount": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
