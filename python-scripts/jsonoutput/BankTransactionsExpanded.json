@@ -1,6 +1,6 @@
 {
     "@odata.context": "https://data.odatalink.com/CJ-Adv-672986/ryan_developmen_4670/Rya-Dev/$metadata#BankTransactionsExpanded",
-    "@odata.nextLink": "https://data.odatalink.com/CJ-Adv-672986/ryan_developmen_4670/Rya-Dev/BankTransactionsExpanded?$top=100&$skip=100&$session=49389606",
+    "@odata.nextLink": "https://data.odatalink.com/CJ-Adv-672986/ryan_developmen_4670/Rya-Dev/BankTransactionsExpanded?$top=100&$skip=100&$session=49389742",
     "value": [
         {
             "DataFile": {

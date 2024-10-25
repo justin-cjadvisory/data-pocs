@@ -2,7 +2,7 @@
 import requests
 import json
 import os
-from config import endpoint_config  # Import the endpoint configuration
+from config import endpoint_config, base_url  # Import the endpoint configuration
 
 def save_json_to_file(data, filename):
     """Saves the given data to a JSON file."""
@@ -11,7 +11,6 @@ def save_json_to_file(data, filename):
 
 def fetch_data(endpoint_type):
     """Fetches data from a specified endpoint and saves it to a JSON file."""
-    base_url = "https://data.odatalink.com/CJ-Adv-672986/ryan_developmen_4670/Rya-Dev/"
     url = f"{base_url}{endpoint_type}"
 
     if endpoint_type not in endpoint_config:

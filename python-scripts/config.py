@@ -1,5 +1,7 @@
-import requests
-import json
+# config.py
+
+# Define the base URL for API requests
+base_url = "https://data.odatalink.com/CJ-Adv-672986/ryan_developmen_4670/Rya-Dev/"
 
 # Define a dictionary to map endpoint types to their corresponding fields
 endpoint_config = {
@@ -93,96 +95,5 @@ endpoint_config = {
         "BatchPaymentID", "Reference", "Particulars", "Narrative", 
         "Date", "InvoiceID", "InvoiceAddresses", "InvoicePaymentServices", 
         "PaymentID", "Amount", "Type", "Status", "TotalAmount", "UpdatedDateUTC", "IsReconciled"
-    ],
-    "Budgets": [
-        "DataFileID", "DataFileName", "DataFileCode", 
-        "BudgetID", "Status", "Description", 
-        "Type", "UpdatedDateUTC", "Tracking"
-    ],
-    "BudgetSummaryByMonth": [
-        "DataFileID", "DataFileName", "DataFileCode", 
-        "FinancialYear", "UpdatedDateUTC", "Lines"
-    ],
-    "ContactsExpanded": [
-        "DataFileID", "DataFileName", "DataFileCode", 
-        "ContactID", "CompanyNumber", "ContactNumber", 
-        "AccountNumber", "ContactStatus", "Name", 
-        "FirstName", "LastName", "EmailAddress", 
-        "SkypeUserName", "BankAccountDetails", "TaxNumber", 
-        "AccountsReceivableTaxType", "AccountsPayableTaxType", 
-        "Addresses", "Phones", "UpdatedDateUTC", 
-        "ContactGroups", "IsSupplier", "IsCustomer", 
-        "Website", "DefaultCurrency", "Discount", 
-        "BrandingTheme", "PurchasesDefaultAccountCode", 
-        "SalesDefaultAccountCode", "SalesTrackingCategories", 
-        "PurchasesTrackingCategories", "SalesDefaultLineAmountType", 
-        "PurchasesDefaultLineAmountType", "BatchPayments", 
-        "PaymentTerms", "Balances", "ContactPersons", 
-        "XeroNetworkKey", "HasAttachments"
-    ],
-    "CreditNotesExpanded": [
-        "DataFileID", "DataFileName", "DataFileCode", 
-        "CreditNoteID", "CreditNoteNumber", "InvoiceAddresses", 
-        "CurrencyRate", "BrandingThemeID", "Type", 
-        "Reference", "RemainingCredit", "Allocations", 
-        "HasAttachments", "ContactID", "ContactName", 
-        "SentToContact", "Date", "DueDate", 
-        "Status", "LineAmountTypes", "LineItems", 
-        "SubTotal", "TotalTax", "Total", 
-        "UpdatedDateUTC", "CurrencyCode", "FullyPaidOnDate"
-    ],
-    "ExecutiveSummary": [
-        "DataFileID", "DataFileName", "DataFileCode", 
-        "Date", "UpdatedDateUTC", "Lines"
-    ],
-    "Invoices": [
-        "DataFileID", "DataFileName", "DataFileCode", 
-        "Type", "InvoiceID", "InvoiceNumber", "Reference", 
-        "Payments", "CreditNotes", "Prepayments", "Overpayments", 
-        "AmountDue", "AmountPaid", "AmountCredited", "SentToContact", 
-        "ExpectedPaymentDate", "PlannedPaymentDate", "CurrencyRate", 
-        "HasAttachments", "InvoiceAddresses", "InvoicePaymentServices", 
-        "ContactID", "ContactName", "RepeatingInvoiceID", 
-        "Date", "DueDate", "BrandingThemeID", "Url", 
-        "Status", "SubTotal", "TotalTax", "Total", 
-        "UpdatedDateUTC", "CurrencyCode", "FullyPaidOnDate", 
-        "CISDeduction"
-    ],
-    "InvoicesExpanded": [
-        "DataFileID", "DataFileName", "DataFileCode", 
-        "InvoiceID", "InvoiceNumber", "Reference", 
-        "Type", "Status", "Date", 
-        "DueDate", "ExpectedPaymentDate", "PlannedPaymentDate", 
-        "FullyPaidOnDate", "ContactID", "ContactName", 
-        "AmountDue", "AmountPaid", "AmountCredited", 
-        "CurrencyCode", "CurrencyRate", "HasAttachments", 
-        "SentToContact", "RepeatingInvoiceID", "BrandingThemeID", 
-        "UpdatedDateUTC"
-    ],
-    "InvoicesExpandedTable": [
-        "DataFileID", "DataFileName", "DataFileCode", 
-        "InvoiceID", "Type", "InvoiceNumber", "Reference", 
-        "Status", "Date", "DueDate", 
-        "ExpectedPaymentDate", "PlannedPaymentDate", 
-        "FullyPaidOnDate", "ContactID", "ContactName", 
-        "LineAmountTypes", "LineID", "LineDescription", 
-        "LineQuantity", "LineUnitAmount", "LineAmount", 
-        "LineTaxAmount", "LineDiscountRate", "LineAccountID", 
-        "LineAccountCode", "LineItemID", "LineItemCode", 
-        "LineItemName", "LineTaxType", "TrackingCategory1ID", 
-        "TrackingCategory1Name", "TrackingOption1Name", 
-        "TrackingCategory2ID", "TrackingCategory2Name", 
-        "TrackingOption2Name", "SubTotal", "TotalTax", 
-        "Total", "AmountDue", "AmountPaid", 
-        "AmountCredited", "CurrencyCode", "CurrencyRate", 
-        "HasAttachments", "SentToContact", "CISDeduction", 
-        "RepeatingInvoiceID", "BrandingThemeID", 
-        "Url", "UpdatedDateUTC"
-    ],
-    "JournalsAccrual": [
-        "DataFileID", "DataFileName", "DataFileCode", "JournalID", 
-        "JournalDate", "JournalNumber", "CreatedDateUTC", "Reference", 
-        "SourceID", "SourceType", "JournalLines"
     ]
 }
-
