@@ -1,8 +1,6 @@
 # Python bytecode
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
 
 # Ignore the output directory for JSON files
 jsonoutput/
+
