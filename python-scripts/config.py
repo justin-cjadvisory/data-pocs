@@ -2,6 +2,10 @@
 
 # Define the base URL for API requests
 base_url = "https://data.odatalink.com/CJ-Adv-672986/ryan_developmen_4670/Rya-Dev/"
+bucket_name = 'cj-data-bucket'
+output_folder = 'jsonoutput/newline-delimited'
+project_name = "cj-data-platform"
+dataset_id = 'cj_dataset_24'
 
 # Define a dictionary to map endpoint types to their corresponding fields
 endpoint_config = {
