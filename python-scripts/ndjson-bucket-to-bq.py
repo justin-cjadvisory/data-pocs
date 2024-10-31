@@ -31,30 +31,17 @@ def main():
     # Step 3: Load each NDJSON file into a separate table
     for blob in blobs:
         if blob.name.endswith('.ndjson'):
-            table_id = os.path.basename(blob.name)[:-8]  # Use filename without '.ndjson' as table ID
+            # Use the filename without '.ndjson' as table ID
+            table_id = blob.name[len("ndjson/"):-8]  # Remove the prefix and '.ndjson'
+            table_id = table_id.replace('/', '_')  # Replace any '/' with '_'
             table_ref = f"{dataset_id_full}.{table_id}"  # Full table ID
-
-            # Step 4: Check if Table exists, if not, create it
-            try:
-                bq_client.get_table(table_ref)  # Attempt to retrieve the table
-                print(f"Table {table_ref} already exists.")
-                continue  # Skip to the next file if the table exists
-            except Exception:
-                table = bigquery.Table(table_ref)
-                # Optionally, define a schema here if you need to
-                # table.schema = [
-                #     bigquery.SchemaField("column1", "STRING"),
-                #     bigquery.SchemaField("column2", "INTEGER"),
-                #     # Add more fields as needed
-                # ]
-                bq_client.create_table(table)
-                print(f"Created table {table_ref}.")
 
             # Load data from GCS to BigQuery
             source_uri = blob.public_url  # GCS URI for the NDJSON file
             job_config = bigquery.LoadJobConfig(
                 source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
-                autodetect=True  # Automatically infers schema from data
+                autodetect=True,  # Automatically infers schema from data
+                write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE  # Overwrite the old table
             )
 
             # Load the NDJSON file into the BigQuery table
