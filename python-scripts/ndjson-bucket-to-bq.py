@@ -32,8 +32,11 @@ def main():
     for blob in blobs:
         if blob.name.endswith('.ndjson'):
             # Use the filename without '.ndjson' as table ID
-            table_id = blob.name[len("ndjson/"):-8]  # Remove the prefix and '.ndjson'
+            table_id = os.path.splitext(os.path.basename(blob.name))[0]  # Get filename without path and extension
+
+            # Ensure the table ID is valid for BigQuery
             table_id = table_id.replace('/', '_')  # Replace any '/' with '_'
+            table_id = table_id.replace('.', '_')  # Replace any '.' with '_' to avoid issues
             table_ref = f"{dataset_id_full}.{table_id}"  # Full table ID
 
             # Load data from GCS to BigQuery
