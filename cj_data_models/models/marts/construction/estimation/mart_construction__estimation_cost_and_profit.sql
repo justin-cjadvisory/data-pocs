@@ -1,7 +1,7 @@
 {{
     config(
         materialized='table',
-        tags=["module:construction"]
+        tags=["module:construction", "submodule:estimation"]
     )
 }}
 
@@ -11,3 +11,4 @@ WITH stg_base AS (
 )
 
 SELECT * FROM stg_base
+WHERE project IS NOT NULL

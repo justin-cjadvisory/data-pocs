@@ -1,0 +1,59 @@
+version: 2
+
+sources:
+  - name: xero_exports
+    database: cj-data-platform
+    schema: cj_dataset_raw_xero_data_24
+    tables:
+      - name: Accounts
+      - name: AccountsClass
+      - name: AccountsTable
+      - name: AccountsTotals
+      - name: AccountsTypes
+      - name: BalanceSheet
+      - name: BalanceSheetAdvanced
+      - name: BalanceSheetByMonth
+      - name: BalanceSheetByTrackingOption
+      - name: BalanceSheetMultiPeriodTable
+      - name: BalanceSheetTable
+      - name: BankSummary
+      - name: BankTransactions
+      - name: BankTransactionsExpanded
+      - name: BankTransfers
+      - name: BatchPayments
+      - name: Contacts
+      - name: ContactsExpanded
+      - name: CreditNotes
+      - name: CreditNotesExpanded
+      - name: ExecutiveSummary
+      - name: Invoices
+      - name: InvoicesExpanded
+      - name: InvoicesExpandedTable
+      - name: Items
+      - name: ItemsTable
+      - name: JournalsAccrual
+      - name: JournalsAccrualTable
+      - name: JournalsCash
+      - name: ManualJournals
+      - name: ManualJournalsExpanded
+      - name: Organisation
+      - name: Overpayments
+      - name: OverpaymentsExpanded
+      - name: Payments
+      - name: PaymentsTable
+      - name: ProfitAndLoss
+      - name: ProfitAndLossAdvanced
+      - name: ProfitAndLossByMonth
+      - name: ProfitAndLossByTrackingCategory
+      - name: ProfitAndLossMultiPeriodTable
+      - name: ProfitAndLossTable
+      - name: PurchaseOrders
+      - name: Quotes
+      - name: RepeatingInvoices
+      - name: TaxRates
+      - name: TaxRatesTable
+      - name: TrackingCategories
+      - name: TrackingCategoriesTable
+      - name: TrialBalance
+      - name: TrialBalanceMultiPeriodTable
+      - name: Users
