@@ -1,13 +1,13 @@
 {{
   config(
     materialized='view',
-    tags=["module:construction"]
+    tags=["module:construction", "submodule:estimation"]
   )
 }}
 
 WITH estimation_base AS (
     SELECT *
-    FROM  {{ ref('estimation_cost_profit') }}
+    FROM  {{ ref('base_construction__estimation_cost_and_profit') }}
 ),
 
 remove_na AS (
