@@ -5,7 +5,7 @@ base_url = "https://data.odatalink.com/CJ-Adv-672986/ryan_developmen_4670/Rya-De
 bucket_name = 'cj-data-bucket'
 output_folder = 'jsonoutput/newline-delimited'
 project_name = "cj-data-platform"
-dataset_id = 'cj_dataset_24'
+dataset_id = 'cj_dataset_xero_exports'
 
 # Define a dictionary to map endpoint types to their corresponding fields
 endpoint_config = {

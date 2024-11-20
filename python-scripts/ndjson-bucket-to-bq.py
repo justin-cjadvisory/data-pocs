@@ -31,13 +31,18 @@ def main():
     # Step 3: Load each NDJSON file into a separate table
     for blob in blobs:
         if blob.name.endswith('.ndjson'):
-            # Use the filename without '.ndjson' as table ID
-            table_id = blob.name[len("ndjson/"):-8]  # Remove the prefix and '.ndjson'
-            table_id = table_id.replace('/', '_')  # Replace any '/' with '_'
+            # Extract the filename and remove the '.ndjson' extension
+            filename = os.path.basename(blob.name)  # Get only the filename from the path
+            if filename.endswith('.ndjson'):
+                table_id = filename.rsplit('.ndjson', 1)[0]  # Remove the '.ndjson' suffix
+            else:
+                print(f"Skipping file {filename} as it does not have the '.ndjson' extension.")
+                continue
+
             table_ref = f"{dataset_id_full}.{table_id}"  # Full table ID
 
             # Load data from GCS to BigQuery
-            source_uri = blob.public_url  # GCS URI for the NDJSON file
+            source_uri = f"gs://{bucket_name}/{blob.name}"  # Construct GCS URI
             job_config = bigquery.LoadJobConfig(
                 source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
                 autodetect=True,  # Automatically infers schema from data
