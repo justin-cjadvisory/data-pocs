@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: xero_exports
     database: cj-data-platform
-    schema: cj_dataset_raw_xero_data_24
+    schema: cj_dataset_xero_exports
     tables:
       - name: Accounts
       - name: AccountsClass
