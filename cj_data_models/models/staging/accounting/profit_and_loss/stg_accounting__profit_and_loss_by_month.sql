@@ -33,4 +33,4 @@ unflatten_and_cast AS (
 
 SELECT * FROM unflatten_and_cast
 WHERE line_type != 'Total'
-
+AND amount_date <= LAST_DAY(CURRENT_DATE())
