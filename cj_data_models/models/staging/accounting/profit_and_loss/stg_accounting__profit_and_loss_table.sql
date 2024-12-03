@@ -30,3 +30,4 @@ unflatten_and_cast AS (
 )
 
 SELECT * FROM unflatten_and_cast
+WHERE line_type NOT IN ('Total', 'Header')

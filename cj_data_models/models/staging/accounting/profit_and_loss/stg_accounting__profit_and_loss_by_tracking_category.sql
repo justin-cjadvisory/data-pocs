@@ -21,7 +21,7 @@ unflatten_and_cast AS (
         CAST(val.TrackingCategoryID AS STRING) AS tracking_category_id,
         CAST(amount.Amount AS FLOAT64) AS amount,
         CAST(amount.TrackingOption2.Option AS STRING) AS tracking_option_2,
-        CAST(amount.TrackingOption.Option AS STRING) AS tracking_option_1,
+        UPPER(CAST(amount.TrackingOption.Option AS STRING)) AS build,
         CAST(val.DataFile.DataFileCode AS STRING) AS datafile_code,
         CAST(val.DataFile.DataFileName AS STRING) AS datafile_name,
         CAST(val.DataFile.DataFileID AS STRING) AS datafile_id
@@ -29,7 +29,9 @@ unflatten_and_cast AS (
         json_base,
         UNNEST(value) AS val,               
         UNNEST(val.Lines) AS line,          
-        UNNEST(line.Amounts) AS amount      
+        UNNEST(line.Amounts) AS amount   
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY build, updated_date_utc ORDER BY updated_date_utc DESC) = 1   
 )
 
 SELECT * FROM unflatten_and_cast
+WHERE build != 'TOTAL'
