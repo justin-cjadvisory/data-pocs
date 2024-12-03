@@ -38,3 +38,4 @@ unflatten_and_cast AS (
 )
 
 SELECT * FROM unflatten_and_cast
+WHERE account_line_type != 'Total'
