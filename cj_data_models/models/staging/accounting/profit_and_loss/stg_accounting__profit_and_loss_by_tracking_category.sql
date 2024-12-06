@@ -34,7 +34,15 @@ unflatten_and_cast AS (
         UNNEST(value) AS val,               
         UNNEST(val.Lines) AS line,          
         UNNEST(line.Amounts) AS amount   
-    -- QUALIFY ROW_NUMBER() OVER (PARTITION BY build, updated_date_utc ORDER BY updated_date_utc DESC) = 1   
+),
+
+fix_9a_quinns_rd AS (
+    SELECT * EXCEPT (build),
+      CASE 
+        WHEN build = '(A QUINNS RD WELLSFORD' THEN '9A QUINNS RD WELLSFORD VIC 3551'
+      ELSE build
+      END AS build
+    FROM unflatten_and_cast
 )
 
 SELECT * FROM unflatten_and_cast
