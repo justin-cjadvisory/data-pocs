@@ -45,6 +45,6 @@ fix_9a_quinns_rd AS (
     FROM unflatten_and_cast
 )
 
-SELECT * FROM unflatten_and_cast
+SELECT * FROM fix_9a_quinns_rd
 WHERE build != 'TOTAL'
 and line_type != 'Total'
