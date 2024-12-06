@@ -9,6 +9,10 @@ bigquery_client = bigquery.Client(project=project_name)
 
 # Function to fetch data from Xero API
 def fetch_data(endpoint_type):
+    if endpoint_type in ["BalanceSheetMultiPeriodTable", "ProfitAndLossMultiPeriodTable", "TrialBalanceMultiPeriodTable"]:
+        print(f"Skipping {endpoint_type} endpoint as it's excluded.")
+        return None
+
     url = f"{base_url}{endpoint_type}"
 
     if endpoint_type not in endpoint_config:
@@ -53,6 +57,9 @@ if __name__ == "__main__":
 
     # Step 1: Fetch and transform data, then upload directly to GCS
     for endpoint in endpoint_config.keys():
+        if endpoint in ["BalanceSheetMultiPeriodTable", "ProfitAndLossMultiPeriodTable", "TrialBalanceMultiPeriodTable"]:
+            continue  # Skip excluded endpoints
+
         print(f"Processing {endpoint}...")
         data = fetch_data(endpoint)
         if data:
