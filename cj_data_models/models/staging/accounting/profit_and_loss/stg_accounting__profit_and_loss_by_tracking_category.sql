@@ -34,8 +34,9 @@ unflatten_and_cast AS (
         UNNEST(value) AS val,               
         UNNEST(val.Lines) AS line,          
         UNNEST(line.Amounts) AS amount   
-    QUALIFY ROW_NUMBER() OVER (PARTITION BY build, updated_date_utc ORDER BY updated_date_utc DESC) = 1   
+    -- QUALIFY ROW_NUMBER() OVER (PARTITION BY build, updated_date_utc ORDER BY updated_date_utc DESC) = 1   
 )
 
 SELECT * FROM unflatten_and_cast
 WHERE build != 'TOTAL'
+and line_type != 'Total'
