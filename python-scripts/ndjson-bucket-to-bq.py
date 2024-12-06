@@ -46,7 +46,7 @@ def main():
             job_config = bigquery.LoadJobConfig(
                 source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
                 autodetect=True,  # Automatically infers schema from data
-                write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE  # Overwrite the old table
+                write_disposition=bigquery.WriteDisposition.WRITE_APPEND  # Append new data to the table
             )
 
             # Load the NDJSON file into the BigQuery table
