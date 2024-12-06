@@ -35,3 +35,4 @@ unflattened_data AS (
 
 SELECT *
 FROM unflattened_data
+QUALIFY ROW_NUMBER() OVER (PARTITION BY updated_date_utc, line_description ORDER BY updated_date_utc DESC) = 1

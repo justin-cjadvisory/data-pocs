@@ -30,3 +30,4 @@ unflatten_and_cast AS (
 )
 
 SELECT * FROM unflatten_and_cast
+QUALIFY ROW_NUMBER() OVER (PARTITION BY updated_date_utc, manual_journal_id ORDER BY manual_journal_id DESC) = 1

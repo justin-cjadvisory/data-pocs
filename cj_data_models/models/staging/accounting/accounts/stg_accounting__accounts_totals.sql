@@ -24,6 +24,7 @@ unflatten_and_cast AS (
     FROM json_base, 
     UNNEST(value) AS val,  
     UNNEST(val.AccountsTypes) AS acc 
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY account_total_name ORDER BY account_total_name DESC) = 1
 )
 
 

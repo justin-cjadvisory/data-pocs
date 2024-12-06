@@ -45,3 +45,4 @@ unflatten_and_cast AS (
 )
 
 SELECT * FROM unflatten_and_cast
+QUALIFY ROW_NUMBER() OVER (PARTITION BY journal_date, item_id ORDER BY journal_date DESC) = 1

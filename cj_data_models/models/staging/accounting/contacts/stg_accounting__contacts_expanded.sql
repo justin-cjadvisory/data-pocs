@@ -90,6 +90,7 @@ unflatten_and_cast AS  (
         ARRAY_TO_STRING(value.ContactGroups, ', ') AS contact_groups
     FROM json_base,
     UNNEST(value) AS value  
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY contact_id ORDER BY name DESC) = 1
 )
 
 SELECT * FROM unflatten_and_cast

@@ -36,6 +36,7 @@ unflatten_and_cast AS (
         CAST(val.DataFileName AS STRING) AS data_file_name
     FROM json_base, 
     UNNEST(value) AS val
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY account_id, updated_date_utc ORDER BY updated_date_utc DESC) = 1
 )
 
 

@@ -43,4 +43,5 @@ unflatten_and_cast AS (
 )
 
 SELECT * FROM unflatten_and_cast
+QUALIFY ROW_NUMBER() OVER (PARTITION BY created_date_utc, line_item_id ORDER BY created_date_utc DESC) = 1
 

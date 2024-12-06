@@ -22,6 +22,7 @@ unflatten_and_cast AS (
         CAST(val.Class AS STRING) AS class
     FROM json_base, 
     UNNEST(value) AS val
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY class ORDER BY class DESC) = 1
 )
 
 

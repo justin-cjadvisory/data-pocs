@@ -78,3 +78,4 @@ unflatten_and_cast AS (
 
 SELECT *
 FROM unflatten_and_cast
+QUALIFY ROW_NUMBER() OVER (PARTITION BY updated_date_utc, account_id ORDER BY updated_date_utc DESC) = 1

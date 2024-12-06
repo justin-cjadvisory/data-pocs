@@ -83,3 +83,4 @@ unflatten_and_cast AS (
 )
 
 SELECT * FROM unflatten_and_cast
+QUALIFY ROW_NUMBER() OVER (PARTITION BY organisation_id ORDER BY organisation_name DESC) = 1
