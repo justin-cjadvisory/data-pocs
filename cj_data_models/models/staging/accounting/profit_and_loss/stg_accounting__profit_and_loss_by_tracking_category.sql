@@ -34,7 +34,7 @@ unflatten_and_cast AS (
         UNNEST(value) AS val,               
         UNNEST(val.Lines) AS line,          
         UNNEST(line.Amounts) AS amount   
-        QUALIFY ROW_NUMBER() OVER (PARTITION BY from_date, build ORDER BY from_date DESC) = 1
+        QUALIFY ROW_NUMBER() OVER (PARTITION BY from_date, build, account_name ORDER BY from_date DESC) = 1
 ),
 
 fix_9a_quinns_rd AS (
