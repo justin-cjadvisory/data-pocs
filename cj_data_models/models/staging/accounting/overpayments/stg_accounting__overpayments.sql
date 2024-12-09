@@ -71,6 +71,7 @@ unflatten_and_cast AS (
     UNNEST(value.Allocations) AS alloc,  -- Unnesting Allocations
     UNNEST(alloc.Invoice.InvoiceAddresses) AS invoice_address,  -- Unnesting InvoiceAddresses (repeated string)
     UNNEST(alloc.Invoice.InvoicePaymentServices) AS payment_service  -- Unnesting InvoicePaymentServices (repeated string)
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY updated_date_utc, invoice_id ORDER BY updated_date_utc DESC) = 1
 )
 
 SELECT * FROM unflatten_and_cast

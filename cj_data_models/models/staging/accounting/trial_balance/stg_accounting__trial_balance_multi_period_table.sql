@@ -27,6 +27,7 @@ unnested_data AS (
         main.DataFileName AS data_file_name
     FROM base_data,
     UNNEST(value) AS main  -- Unnest `value` field
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY account_id, record_date ORDER BY record_date DESC) = 1
 )
 
 SELECT *

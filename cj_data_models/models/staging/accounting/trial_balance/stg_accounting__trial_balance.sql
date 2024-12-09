@@ -32,6 +32,7 @@ unnested_data AS (
     FROM base_data,
     UNNEST(value) AS main,       -- Unnest `value` field
     UNNEST(main.Lines) AS line   -- Unnest `Lines` within `value`
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY account_id, record_date ORDER BY record_date DESC) = 1
 )
 
 SELECT *

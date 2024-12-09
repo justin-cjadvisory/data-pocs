@@ -32,6 +32,7 @@ unnested_data AS (
     FROM json_base,
     UNNEST(json_base.value) AS main,            -- Unnest the `value` repeated record
     UNNEST(main.TaxComponents) AS tax_component_item -- Further unnest `TaxComponents`
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY tax_name ORDER BY tax_name DESC) = 1
 )
 
 SELECT * 

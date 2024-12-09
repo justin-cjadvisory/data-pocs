@@ -24,6 +24,7 @@ unnested_data AS (
         main.DataFileID AS data_file_id
     FROM base_data,
     UNNEST(value) AS main  -- Unnest `value` field
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY tracking_option_id ORDER BY tracking_option_id DESC) = 1
 )
 
 SELECT *
