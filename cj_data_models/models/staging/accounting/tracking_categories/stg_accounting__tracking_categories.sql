@@ -27,6 +27,7 @@ unnested_data AS (
     FROM base_data,
     UNNEST(value) AS main,           -- Unnest `value` field
     UNNEST(main.Options) AS option   -- Unnest `Options` within `value`
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY tracking_option_id ORDER BY tracking_option_id DESC) = 1
 )
 
 SELECT *

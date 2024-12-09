@@ -59,6 +59,7 @@ unflatten_and_cast AS (
     FROM json_base,
     UNNEST(value) AS value,  -- Unnest the root array
     UNNEST(value.LineItems) AS li  -- Unnest the LineItems array
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY updated_date_utc, account_id ORDER BY updated_date_utc DESC) = 1
 )
 
 

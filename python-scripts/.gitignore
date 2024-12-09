@@ -4,3 +4,4 @@ __pycache__/
 # Ignore the output directory for JSON files
 jsonoutput/
 
+bulk-excel-files/

@@ -46,6 +46,7 @@ unflatten_and_cast AS (
         CAST(value.Contact.ContactID AS STRING) AS contact_id
     FROM json_base,
     UNNEST(value) AS value
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY updated_date_utc, account_id ORDER BY updated_date_utc DESC) = 1
 )
 
 SELECT * FROM unflatten_and_cast

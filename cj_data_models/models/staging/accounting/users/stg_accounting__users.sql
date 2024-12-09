@@ -26,6 +26,7 @@ unnested_data AS (
         main.DataFile.DataFileID AS data_file_id
     FROM base_data,
     UNNEST(value) AS main  -- Unnest `value` field
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY user_id DESC) = 1
 )
 
 SELECT *

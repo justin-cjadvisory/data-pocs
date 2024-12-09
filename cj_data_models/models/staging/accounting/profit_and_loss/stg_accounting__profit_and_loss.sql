@@ -28,6 +28,7 @@ unflatten_and_cast AS (
     FROM json_base,
     UNNEST(value) AS val,
     UNNEST(val.Lines) AS line
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY from_date, account_id ORDER BY from_date DESC) = 1
 )
 
 SELECT * FROM unflatten_and_cast

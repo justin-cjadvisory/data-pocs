@@ -54,6 +54,7 @@ unflatten_and_cast AS (
     UNNEST(value.Invoice.InvoicePaymentServices) AS ips,  -- Unnest InvoicePaymentServices (ARRAY)
     UNNEST(value.Invoice.InvoiceAddresses) AS ias,        -- Unnest InvoiceAddresses (ARRAY)
     UNNEST([value.Account]) AS account                     -- Flatten Account (if it's a single record)
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY updated_date_utc, account_id ORDER BY updated_date_utc DESC) = 1
 )
 
 SELECT * FROM unflatten_and_cast

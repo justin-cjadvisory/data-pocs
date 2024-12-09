@@ -30,6 +30,7 @@ unflatten_and_cast AS (
         CAST(val.PaymentsOnly AS BOOLEAN) AS payments_only
     FROM json_base, 
     UNNEST(value) AS val
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY date, account_id ORDER BY date DESC) = 1
 )
 
 

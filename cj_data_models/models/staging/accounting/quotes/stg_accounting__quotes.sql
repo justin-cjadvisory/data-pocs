@@ -70,6 +70,7 @@ unflatten_and_cast AS (
     -- Unnest nested LineItems and LineItems.Tracking
     UNNEST(value.LineItems) AS line_items,
     UNNEST(line_items.Tracking) AS line_items_tracking
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY updated_date_utc, quote_id ORDER BY updated_date_utc DESC) = 1
 )
 
 SELECT * 

@@ -25,6 +25,7 @@ unflatten_and_cast AS (
         CAST(value.DataFileID AS STRING) AS data_file_id
     FROM json_base,
     UNNEST(value) AS value
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY date, account_id ORDER BY date DESC) = 1
 )
 
 SELECT * FROM unflatten_and_cast

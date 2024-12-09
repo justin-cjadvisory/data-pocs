@@ -32,6 +32,7 @@ unnested_data AS (
         main.DataFileName AS data_file_name
     FROM json_base,
     UNNEST(value) AS main -- Unnest `value` field
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY tax_name ORDER BY tax_name DESC) = 1
 )
 
 SELECT * 

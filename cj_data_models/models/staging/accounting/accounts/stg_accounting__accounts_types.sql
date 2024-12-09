@@ -23,6 +23,7 @@ unflatten_and_cast AS (
         CAST(val.AccountType AS STRING) AS account_type
     FROM json_base, 
     UNNEST(value) AS val  
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY class ORDER BY class DESC) = 1
 )
 
 SELECT * FROM unflatten_and_cast

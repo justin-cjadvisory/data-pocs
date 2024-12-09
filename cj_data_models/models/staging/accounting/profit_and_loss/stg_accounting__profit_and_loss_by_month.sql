@@ -29,6 +29,7 @@ unflatten_and_cast AS (
     UNNEST(value) AS val,
     UNNEST(val.Lines) AS line,
     UNNEST(line.Amounts) AS amount
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY updated_date_utc, date, account_name ORDER BY date DESC) = 1
 )
 
 SELECT * FROM unflatten_and_cast
