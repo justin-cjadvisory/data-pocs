@@ -12,12 +12,6 @@ WITH estimated_pnl_per_build AS (
         from_date,
         to_date,
         build,
-        estimate_stage,
-        estimate_substage,
-        estimate_component,
-        resource,
-        description,
-        supplier,
         cost,
         cost_with_markup,
         profit
@@ -34,7 +28,7 @@ xero_pnl_per_build AS (
         account_line_type,
         amount
     FROM {{ ref('mart_accounting__profit_and_loss_by_tracking_category') }} 
-)
+),
 
 actual_profit_and_cost AS (
     SELECT
@@ -43,19 +37,38 @@ actual_profit_and_cost AS (
         e.from_date,
         e.to_date,
         e.build,
-        e.estimate_stage,
-        e.estimate_substage,
-        e.estimate_component,
-        e.resource,
-        e.description,
-        e.supplier,
-        e.cost AS estimated_cost,
-        e.cost_with_markup AS estimated_cost_with_markup,
-        e.profit AS estimated_profit
-
+        SUM(e.cost_with_markup) AS estimated_cost_with_markup,
+        SUM(e.profit) AS estimated_profit,
+        SUM(IF(x.account_line_type IN ('Less Operating Expenses', 'Less Cost of Sales'), amount, 0)) AS actual_cost,
+        SUM(IF(x.account_line_type IN ('Income'), amount, 0)) AS actual_income
     FROM estimated_pnl_per_build e
     LEFT JOIN xero_pnl_per_build x on x.from_date = e.from_date 
+        AND x.to_date = e.to_date
         AND x.build = e.build
+    GROUP BY ALL
+),
+
+compute_actual_profit AS (
+    SELECT
+        ap.*,
+        SUM(actual_income - actual_cost) AS actual_profit
+    FROM actual_profit_and_cost ap
+    GROUP BY ALL
+),
+
+create_flags AS (
+    SELECT 
+        c.*,
+        CASE 
+            WHEN actual_cost > estimated_cost_with_markup THEN TRUE
+            ELSE FALSE
+        END AS exceeded_cost,
+        CASE 
+            WHEN actual_profit > estimated_profit THEN TRUE
+            ELSE FALSE
+        END AS exceeded_profit
+    FROM compute_actual_profit c
 )
 
-SELECT * FROM actual_profit_and_cost
+SELECT * FROM create_flags
+WHERE from_date IS NOT NULL
