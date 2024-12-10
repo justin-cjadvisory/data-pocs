@@ -30,7 +30,7 @@ actual_profit_and_cost AS (
         SUM(IF(x.account_line_type IN ('Less Operating Expenses', 'Less Cost of Sales'), amount, 0)) AS actual_cost,
         SUM(IF(x.account_line_type IN ('Income'), amount, 0)) AS actual_income
     FROM estimated_pnl_per_build e
-    LEFT JOIN xero_pnl_per_build x on x.build = e.build 
+    INNER JOIN xero_pnl_per_build x on x.build = e.build 
     GROUP BY ALL
 ),
 
@@ -57,4 +57,3 @@ create_flags AS (
 )
 
 SELECT * FROM create_flags
-WHERE (actual_cost > 0 AND actual_income > 0)
