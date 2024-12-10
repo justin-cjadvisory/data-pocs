@@ -11,4 +11,4 @@ WITH stg_base AS (
 )
 
 SELECT * FROM stg_base
-WHERE project IS NOT NULL
+WHERE build IS NOT NULL

@@ -22,7 +22,7 @@ remove_na AS (
 convert_appropriate_datatype AS (
     SELECT
         PARSE_DATE('%d/%m/%Y', quoted_date) AS quoted_date,
-        CAST(project AS STRING) AS project, 
+        CAST(project AS STRING) AS build, 
         CAST(estimate_stage AS STRING) AS estimate_stage, 
         CAST(estimate_substage AS STRING) AS estimate_substage, 
         CAST(estimate_component AS STRING) AS estimate_component, 
@@ -42,6 +42,33 @@ convert_appropriate_datatype AS (
         ROUND(SAFE_CAST(REPLACE(REPLACE(cost_with_markup, '$', ''), ',', '') AS FLOAT64), 2) AS cost_with_markup,
         ROUND(SAFE_CAST(profit AS FLOAT64), 2) AS profit,
     FROM remove_na
+),
+
+add_more_dates AS (
+    SELECT
+        c.*,
+        EXTRACT(YEAR FROM quoted_date) AS year,
+        EXTRACT(MONTH FROM quoted_date) AS month,
+        DATE_TRUNC(quoted_date, MONTH) AS from_date,
+        LAST_DAY(quoted_date) AS to_date
+    FROM convert_appropriate_datatype c
+),
+
+rename_build AS (
+    SELECT
+        a.* EXCEPT (build),
+        CASE
+            WHEN build = '2 HAWDON ST. EAGLEMONT' THEN '2 HAWDON STREET EAGLEMONT'
+            WHEN build = '10-14 VIRGINIA COURT, MONTMORENCY' THEN '10-14 VIRGINIA COURT'
+            WHEN build = '4 BREEN ST PRESTON' THEN '4 BREEN STREET PRESTON'
+            WHEN build = '9A QUINNS RD WELLSFORD' THEN '9A QUINNS RD WELLSFORD VIC 3551'
+            WHEN build = '18 BOYCE AVE. BRIAR HILL' THEN '18 BOYCE AVENUE BRIAR HILL'
+            WHEN build = '10 SHEFFIELD ST ELTHAM' THEN '10 SHEFFIELD ST ELTHAM'
+            WHEN build = '28 MORTIMER ST HEIDLEBERG' THEN '28 MORTIMER STREET HEIDELBERG'
+            WHEN build = '68 LUCK ST ELTHAM' THEN '68 LUCK STREET ELTHAM'
+            ELSE build
+        END AS build
+    FROM add_more_dates a
 )
 
-SELECT * FROM convert_appropriate_datatype
+SELECT * FROM rename_build
