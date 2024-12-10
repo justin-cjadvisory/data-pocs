@@ -50,9 +50,17 @@ create_flags AS (
             ELSE FALSE
         END AS exceeded_estimated_cost,
         CASE 
+            WHEN actual_cost = estimated_cost_with_markup THEN TRUE
+            ELSE FALSE
+        END AS warning_build_cost,
+        CASE 
             WHEN actual_profit > estimated_profit THEN TRUE
             ELSE FALSE
-        END AS exceeded_estimated_profit
+        END AS exceeded_estimated_profit,
+        CASE 
+            WHEN actual_profit = estimated_profit THEN TRUE
+            ELSE FALSE
+        END AS warning_build_profit
     FROM compute_actual_profit c
 )
 
