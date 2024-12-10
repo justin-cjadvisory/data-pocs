@@ -10,7 +10,7 @@ WITH stg_base AS (
     FROM  {{ ref('stg_accounting__profit_and_loss_by_tracking_category') }}
 ),
 
-historical_data AS (
+load_historical_data AS (
     SELECT *
     FROM {{ ref('stg_accounting__profit_and_loss_by_tracking_category_historical') }}
 ),
@@ -25,7 +25,7 @@ populate_data AS (
       h.account_line_type,
       h.account_name,
       h.amount
-    FROM historical_data h
+    FROM load_historical_data h
     UNION ALL
     SELECT
       EXTRACT(YEAR FROM s.from_date) AS year,
